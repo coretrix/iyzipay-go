@@ -1,0 +1,33 @@
+package iyzipay_examples
+
+import (
+	"encoding/json"
+	"fmt"
+	builder "github.com/kurtulussahin/iyzipay-go/examples/builder"
+	iyzipay "github.com/kurtulussahin/iyzipay-go/iyzipay"
+)
+
+func ExampleCreateThreedsPayment() {
+	options := iyzipay.Options{}
+	options = builder.CreateSampleOptions()
+
+	request := iyzipay.CreateThreedsPaymentRequest{
+		Locale:           "tr",
+		ConversationId:   "123456789",
+		PaymentId:        "1",
+		ConversationData: "conversation data",
+	}
+
+	rawResponse := iyzipay.ThreedsPayment{}.Create(request, options)
+
+	var response map[string]interface{}
+	json.Unmarshal([]byte(rawResponse), &response)
+
+	fmt.Println(response["status"])
+	fmt.Println(response["locale"])
+	fmt.Println(response["conversationId"])
+	fmt.Println(response["errorCode"])
+	fmt.Println(response["errorMessage"])
+	fmt.Println(response["errorGroup"])
+	//This test needs manual 3ds redirection on sandbox environment. So it does not contain any assertions.
+}

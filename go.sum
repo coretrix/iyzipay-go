@@ -1,0 +1,4 @@
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/kurtulussahin/iyzipay-go v0.0.0-20200228054221-8c271690721f h1:/a0tjV8bUAmuJqUOU5KdMKt1kqPvJaLeDSmnuGjc0wA=
+github.com/kurtulussahin/iyzipay-go v0.0.0-20200228054221-8c271690721f/go.mod h1:0KYHrlYuStg/KSGQhROx407/fzkjcn6YXNEXzoHqknc=
