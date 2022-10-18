@@ -1,0 +1,52 @@
+linters:
+  enable:
+    - forbidigo
+    - goimports
+    - gci
+    - gocyclo
+    - gosec
+    - nolintlint
+    - stylecheck
+    - unparam
+    - whitespace
+    - revive
+    - wsl
+    - funlen
+    - lll
+    - misspell
+    - nilerr
+    - nlreturn
+
+linters-settings:
+  funlen:
+    lines: 100
+    statements: 50
+  wsl:
+    allow-cuddle-declarations: true
+  gocyclo:
+    min-complexity: 15
+  goimports:
+    local-prefixes: github.com/coretrix/clockwork
+  gci:
+    sections:
+      - standard # Standard section: captures all standard packages.
+      - default # Default section: contains all imports that could not be matched to another section type.
+      - prefix(github.com/coretrix/iyzipay) # Custom section: groups all imports with the specified Prefix.
+  lll:
+    line-length: 150
+  misspell:
+    locale: US
+  nolintlint:
+    require-explanation: true
+  forbidigo:
+    forbid:
+      - ^fmt\.Print(|f|ln)$
+      - ^spew\.Dump$
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+run:
+  timeout: 180s
+  go: '1.17'

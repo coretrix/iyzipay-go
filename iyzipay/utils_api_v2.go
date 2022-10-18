@@ -7,7 +7,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 
@@ -15,8 +15,7 @@ import (
 )
 
 func connectV2(method, uri, apiKey, secretKey string, req interface{}) (string, error) {
-	randomString := uuid.New().String()
-	authHeader, err := prepareAuthorizationStringV2(uri, apiKey, secretKey, randomString, req)
+	authHeader, err := prepareAuthorizationStringV2(uri, apiKey, secretKey, uuid.New().String(), req)
 	if err != nil {
 		return "", err
 	}
@@ -43,6 +42,7 @@ func connectV2(method, uri, apiKey, secretKey string, req interface{}) (string, 
 	request.Header.Set("Authorization", authHeader)
 
 	client := http.Client{}
+
 	rawResponse, err := client.Do(request)
 	if err != nil {
 		return "", err
@@ -50,7 +50,7 @@ func connectV2(method, uri, apiKey, secretKey string, req interface{}) (string, 
 
 	defer rawResponse.Body.Close()
 
-	bodyByte, err := ioutil.ReadAll(rawResponse.Body)
+	bodyByte, err := io.ReadAll(rawResponse.Body)
 	if err != nil {
 		return "", err
 	}
@@ -63,6 +63,7 @@ func prepareAuthorizationStringV2(uri, apiKey, secretKey, randomString string, r
 	if err != nil {
 		return "", err
 	}
+
 	return "IYZWSv2 " + authContent, nil
 }
 
@@ -73,6 +74,7 @@ func generateAuthContent(uri, apiKey, secretKey, randomString string, request in
 	}
 
 	input := "apiKey:" + apiKey + "&randomKey:" + randomString + "&signature:" + hmac256
+
 	return base64.StdEncoding.EncodeToString([]byte(input)), nil
 }
 

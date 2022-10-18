@@ -9,7 +9,6 @@ type Address struct {
 }
 
 func (request Address) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
 	pkiBuilder.append("address", request.Address)

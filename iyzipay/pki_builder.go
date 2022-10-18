@@ -6,7 +6,7 @@ import (
 )
 
 type PkiBuilder struct {
-	request_string string
+	requestString string
 }
 
 func (pkiBuilder *PkiBuilder) append(key string, value string) {
@@ -17,50 +17,48 @@ func (pkiBuilder *PkiBuilder) append(key string, value string) {
 
 func (pkiBuilder *PkiBuilder) appendArray(key string, array []string) {
 	if array != nil {
-		appended_value := ""
+		appendedValue := ""
 		for _, value := range array {
-			appended_value = appended_value + value + ", "
+			appendedValue = appendedValue + value + ", "
 		}
-		pkiBuilder.appendKeyValueArray(key, appended_value)
+
+		pkiBuilder.appendKeyValueArray(key, appendedValue)
 	}
 }
 
 func (pkiBuilder *PkiBuilder) appendKeyValue(key string, value string) {
-	pkiBuilder.request_string = pkiBuilder.request_string + key + "=" + value + ","
+	pkiBuilder.requestString = pkiBuilder.requestString + key + "=" + value + ","
 }
 
-func (pkiBuilder *PkiBuilder) appendKeyValueArray(key string, appended_value string) {
-
-	appended_value = appended_value[:len(appended_value)-2]
-	pkiBuilder.request_string = pkiBuilder.request_string + key + "=[" + appended_value + "],"
-
+func (pkiBuilder *PkiBuilder) appendKeyValueArray(key string, appendedValue string) {
+	appendedValue = appendedValue[:len(appendedValue)-2]
+	pkiBuilder.requestString = pkiBuilder.requestString + key + "=[" + appendedValue + "],"
 }
 
 func (pkiBuilder *PkiBuilder) appendPrice(key string, value string) {
 	if value != "" {
-		value_to_float, _ := strconv.ParseFloat(value, 64)
-		raunded_string_value := string(fmt.Sprintf("%.2f", value_to_float))
+		valueToFloat, _ := strconv.ParseFloat(value, 64)
+		roundedStringValue := fmt.Sprintf("%.2f", valueToFloat)
 
-		if (raunded_string_value[len(raunded_string_value)-1:]) == "0" {
-			raunded_string_value = raunded_string_value[:len(raunded_string_value)-1]
+		if (roundedStringValue[len(roundedStringValue)-1:]) == "0" {
+			roundedStringValue = roundedStringValue[:len(roundedStringValue)-1]
 		}
 
-		pkiBuilder.appendKeyValue(key, raunded_string_value)
+		pkiBuilder.appendKeyValue(key, roundedStringValue)
 	}
 }
 
 func (pkiBuilder *PkiBuilder) getRequestString() string {
 	pkiBuilder.removeTrailingComma()
 	pkiBuilder.appendPrefix()
-	return pkiBuilder.request_string
+
+	return pkiBuilder.requestString
 }
 
 func (pkiBuilder *PkiBuilder) removeTrailingComma() {
-	pkiBuilder.request_string = pkiBuilder.request_string[:len(pkiBuilder.request_string)-1]
-
+	pkiBuilder.requestString = pkiBuilder.requestString[:len(pkiBuilder.requestString)-1]
 }
 
 func (pkiBuilder *PkiBuilder) appendPrefix() {
-	pkiBuilder.request_string = "[" + pkiBuilder.request_string + "]"
-
+	pkiBuilder.requestString = "[" + pkiBuilder.requestString + "]"
 }

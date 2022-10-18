@@ -1,9 +1,7 @@
 package iyzipay
 
-type ApiTest struct{}
+type APITest struct{}
 
-func (apiTest ApiTest) Retrieve(options Options) string {
-
-	response := connect("GET", "/payment/test", options, "", "")
-	return response
+func (apiTest APITest) Retrieve(options Options) string {
+	return connect("GET", "/payment/test", options, "", "")
 }

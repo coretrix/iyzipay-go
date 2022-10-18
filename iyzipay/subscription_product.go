@@ -2,13 +2,13 @@ package iyzipay
 
 type SubscriptionProduct struct {
 	Locale         string `json:"locale,omitempty"`
-	ConversationId string `json:"conversationId,omitempty"`
+	ConversationID string `json:"conversationId,omitempty"`
 	Name           string `json:"name,omitempty"`
 	Description    string `json:"description,omitempty"`
 }
 
 func (p *SubscriptionProduct) Create(options *Options) (*SubscriptionProductResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/products", options.apiKey, options.secretKey, p)
+	response, err := connectV2("POST", options.baseURL+"/v2/subscription/products", options.apiKey, options.secretKey, p)
 	if err != nil {
 		return nil, err
 	}

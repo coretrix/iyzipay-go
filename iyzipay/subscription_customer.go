@@ -2,7 +2,7 @@ package iyzipay
 
 type SubscriptionCustomer struct {
 	Locale          string               `json:"locale,omitempty"`
-	ConversationId  string               `json:"conversationId,omitempty"`
+	ConversationID  string               `json:"conversationId,omitempty"`
 	Name            string               `json:"name,omitempty"`
 	Surname         string               `json:"surname,omitempty"`
 	IdentityNumber  string               `json:"identityNumber,omitempty"`
@@ -21,7 +21,7 @@ type SubscriptionAddress struct {
 }
 
 func (p *SubscriptionCustomer) Create(options *Options) (*SubscriptionCustomerResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/customers", options.apiKey, options.secretKey, p)
+	response, err := connectV2("POST", options.baseURL+"/v2/subscription/customers", options.apiKey, options.secretKey, p)
 	if err != nil {
 		return nil, err
 	}

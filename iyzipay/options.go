@@ -1,15 +1,13 @@
 package iyzipay
 
-import ()
-
 type Options struct {
 	apiKey    string
 	secretKey string
-	baseUrl   string
+	baseURL   string
 }
 
-func (options *Options) New(apiKey string, secretKey string, baseUrl string) {
+func (options *Options) New(apiKey string, secretKey string, baseURL string) {
 	options.apiKey = apiKey
 	options.secretKey = secretKey
-	options.baseUrl = baseUrl
+	options.baseURL = baseURL
 }

@@ -11,7 +11,7 @@ const (
 
 type PricingPlan struct {
 	Locale               string  `json:"locale,omitempty"`
-	ConversationId       string  `json:"conversationId,omitempty"`
+	ConversationID       string  `json:"conversationId,omitempty"`
 	ProductReferenceCode string  `json:"productReferenceCode,omitempty"`
 	Name                 string  `json:"name,omitempty"`
 	Price                float64 `json:"price,omitempty"`
@@ -24,7 +24,11 @@ type PricingPlan struct {
 }
 
 func (p *PricingPlan) Create(options *Options) (*PricingPlanResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/products/"+p.ProductReferenceCode+"/pricing-plans", options.apiKey, options.secretKey, p)
+	response, err := connectV2(
+		"POST",
+		options.baseURL+"/v2/subscription/products/"+p.ProductReferenceCode+"/pricing-plans",
+		options.apiKey,
+		options.secretKey, p)
 	if err != nil {
 		return nil, err
 	}

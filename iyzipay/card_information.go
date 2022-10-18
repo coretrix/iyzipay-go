@@ -9,7 +9,6 @@ type CardInformation struct {
 }
 
 func (request CardInformation) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
 	pkiBuilder.append("cardAlias", request.CardAlias)

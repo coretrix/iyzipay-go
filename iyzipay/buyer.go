@@ -1,7 +1,7 @@
 package iyzipay
 
 type Buyer struct {
-	Id                  string `json:"id,omitempty"`
+	ID                  string `json:"id,omitempty"`
 	Name                string `json:"name,omitempty"`
 	Surname             string `json:"surname,omitempty"`
 	IdentityNumber      string `json:"identityNumber,omitempty"`
@@ -13,14 +13,13 @@ type Buyer struct {
 	City                string `json:"city,omitempty"`
 	Country             string `json:"country,omitempty"`
 	ZipCode             string `json:"zipCode,omitempty"`
-	Ip                  string `json:"ip,omitempty"`
+	IP                  string `json:"ip,omitempty"`
 }
 
 func (request Buyer) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
-	pkiBuilder.append("id", request.Id)
+	pkiBuilder.append("id", request.ID)
 	pkiBuilder.append("name", request.Name)
 	pkiBuilder.append("surname", request.Surname)
 	pkiBuilder.append("identityNumber", request.IdentityNumber)
@@ -32,7 +31,7 @@ func (request Buyer) toPkiString() string {
 	pkiBuilder.append("city", request.City)
 	pkiBuilder.append("country", request.Country)
 	pkiBuilder.append("zipCode", request.ZipCode)
-	pkiBuilder.append("ip", request.Ip)
+	pkiBuilder.append("ip", request.IP)
 
 	return pkiBuilder.getRequestString()
 }

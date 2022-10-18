@@ -8,7 +8,7 @@ type (
 		ErrorGroup     string `json:"errorGroup"`
 		Locale         string `json:"locale"`
 		SystemTime     int64  `json:"systemTime"`
-		ConversationId string `json:"conversationId"`
+		ConversationID string `json:"conversationId"`
 	}
 
 	SubMerchantResponse struct {
@@ -24,7 +24,7 @@ type (
 		ContactName           string `json:"contactName"`
 		ContactSurname        string `json:"contactSurname"`
 		LegalCompanyTitle     string `json:"legalCompanyTitle"`
-		SubMerchantExternalId string `json:"subMerchantExternalId"`
+		SubMerchantExternalID string `json:"subMerchantExternalId"`
 		IdentityNumber        string `json:"identityNumber"`
 		TaxNumber             string `json:"taxNumber"`
 		SubMerchantType       string `json:"subMerchantType"`
@@ -36,13 +36,13 @@ type (
 		Token               string `json:"token"`
 		CheckoutFormContent string `json:"checkoutFormContent"`
 		TokenExpireTime     int64  `json:"tokenExpireTime"`
-		PaymentPageUrl      string `json:"paymentPageUrl"`
+		PaymentPageURL      string `json:"paymentPageUrl"`
 	}
 
 	RefundResponse struct {
 		Resource
-		PaymentId            string  `json:"paymentId"`
-		PaymentTransactionId string  `json:"paymentTransactionId"`
+		PaymentID            string  `json:"paymentId"`
+		PaymentTransactionID string  `json:"paymentTransactionId"`
 		Price                float64 `json:"price"`
 		Currency             string  `json:"currency"`
 		ConnectorName        string  `json:"connectorName"`
@@ -55,7 +55,7 @@ type (
 		Price                        float64 `json:"price"`
 		PaidPrice                    float64 `json:"paidPrice"`
 		Installment                  int     `json:"installment"`
-		PaymentId                    string  `json:"paymentId"`
+		PaymentID                    string  `json:"paymentId"`
 		FraudStatus                  int     `json:"fraudStatus"`
 		MerchantCommissionRate       float64 `json:"merchantCommissionRate"`
 		MerchantCommissionRateAmount float64 `json:"merchantCommissionRateAmount"`
@@ -66,11 +66,11 @@ type (
 		CardFamily                   string  `json:"cardFamily"`
 		BinNumber                    string  `json:"binNumber"`
 		LastFourDigits               string  `json:"lastFourDigits"`
-		BasketId                     string  `json:"basketId"`
+		BasketID                     string  `json:"basketId"`
 		Currency                     string  `json:"currency"`
 		ItemTransactions             []struct {
-			ItemId                        string  `json:"itemId"`
-			PaymentTransactionId          string  `json:"paymentTransactionId"`
+			ItemID                        string  `json:"itemId"`
+			PaymentTransactionID          string  `json:"paymentTransactionId"`
 			TransactionStatus             int     `json:"transactionStatus"`
 			Price                         float64 `json:"price"`
 			PaidPrice                     float64 `json:"paidPrice"`
@@ -105,7 +105,7 @@ type (
 		MdStatus      int    `json:"mdStatus"`
 		HostReference string `json:"hostReference"`
 		Token         string `json:"token"`
-		CallbackUrl   string `json:"callbackUrl"`
+		CallbackURL   string `json:"callbackUrl"`
 		PaymentStatus string `json:"paymentStatus"`
 	}
 )

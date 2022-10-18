@@ -13,7 +13,6 @@ type PaymentCard struct {
 }
 
 func (request PaymentCard) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
 	pkiBuilder.append("cardHolderName", request.CardHolderName)

@@ -7,15 +7,15 @@ const (
 
 type Subscription struct {
 	Locale                    string                `json:"locale,omitempty"`
-	ConversationId            string                `json:"conversationId,omitempty"`
-	CallbackUrl               string                `json:"callbackUrl,omitempty"`
+	ConversationID            string                `json:"conversationId,omitempty"`
+	CallbackURL               string                `json:"callbackUrl,omitempty"`
 	PricingPlanReferenceCode  string                `json:"pricingPlanReferenceCode,omitempty"`
 	SubscriptionInitialStatus string                `json:"subscriptionInitialStatus,omitempty"` // PENDING or ACTIVE
 	SubscriptionCustomer      *SubscriptionCustomer `json:"customer,omitempty"`
 }
 
 func (p *Subscription) Create(options *Options) (*SubscriptionResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/checkoutform/initialize", options.apiKey, options.secretKey, p)
+	response, err := connectV2("POST", options.baseURL+"/v2/subscription/checkoutform/initialize", options.apiKey, options.secretKey, p)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ type SubscriptionCheckoutFormResult struct {
 }
 
 func (p *SubscriptionCheckoutFormResult) Get(options *Options) (*SubscriptionCheckoutFormResponse, error) {
-	response, err := connectV2("GET", options.baseUrl+"/v2/subscription/checkoutform/"+p.Token, options.apiKey, options.secretKey, nil)
+	response, err := connectV2("GET", options.baseURL+"/v2/subscription/checkoutform/"+p.Token, options.apiKey, options.secretKey, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,12 @@ type SubscriptionUpgrade struct {
 }
 
 func (p *SubscriptionUpgrade) Upgrade(options *Options) (*SubscriptionUpgradeResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/subscriptions/"+p.SubscriptionReferenceCode+"/upgrade", options.apiKey, options.secretKey, p)
+	response, err := connectV2(
+		"POST",
+		options.baseURL+"/v2/subscription/subscriptions/"+p.SubscriptionReferenceCode+"/upgrade",
+		options.apiKey,
+		options.secretKey,
+		p)
 	if err != nil {
 		return nil, err
 	}
@@ -89,12 +94,17 @@ type SubscriptionUpgradeResponse struct {
 
 type SubscriptionCancel struct {
 	Locale                    string `json:"locale,omitempty"`
-	ConversationId            string `json:"conversationId,omitempty"`
+	ConversationID            string `json:"conversationId,omitempty"`
 	SubscriptionReferenceCode string `json:"subscriptionReferenceCode,omitempty"`
 }
 
 func (p *SubscriptionCancel) Cancel(options *Options) (*SubscriptionCancelResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/subscriptions/"+p.SubscriptionReferenceCode+"/cancel", options.apiKey, options.secretKey, p)
+	response, err := connectV2(
+		"POST",
+		options.baseURL+"/v2/subscription/subscriptions/"+p.SubscriptionReferenceCode+"/cancel",
+		options.apiKey,
+		options.secretKey,
+		p)
 	if err != nil {
 		return nil, err
 	}
@@ -110,14 +120,19 @@ type SubscriptionCancelResponse struct {
 
 type SubscriptionUpdateCardInformation struct {
 	Locale                    string `json:"locale,omitempty"`
-	ConversationId            string `json:"conversationId,omitempty"`
+	ConversationID            string `json:"conversationId,omitempty"`
 	SubscriptionReferenceCode string `json:"subscriptionReferenceCode,omitempty"`
 	CustomerReferenceCode     string `json:"customerReferenceCode,omitempty"`
-	CallBackUrl               string `json:"callbackUrl,omitempty"`
+	CallBackURL               string `json:"callbackUrl,omitempty"`
 }
 
 func (p *SubscriptionUpdateCardInformation) UpdateSubscriptionCardInformation(options *Options) (*SubscriptionUpdateCardInformationResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/card-update/checkoutform/initialize/with-subscription", options.apiKey, options.secretKey, p)
+	response, err := connectV2(
+		"POST",
+		options.baseURL+"/v2/subscription/card-update/checkoutform/initialize/with-subscription",
+		options.apiKey,
+		options.secretKey,
+		p)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +141,7 @@ func (p *SubscriptionUpdateCardInformation) UpdateSubscriptionCardInformation(op
 }
 
 func (p *SubscriptionUpdateCardInformation) UpdateCustomerCardInformation(options *Options) (*SubscriptionUpdateCardInformationResponse, error) {
-	response, err := connectV2("POST", options.baseUrl+"/v2/subscription/card-update/checkoutform/initialize", options.apiKey, options.secretKey, p)
+	response, err := connectV2("POST", options.baseURL+"/v2/subscription/card-update/checkoutform/initialize", options.apiKey, options.secretKey, p)
 	if err != nil {
 		return nil, err
 	}

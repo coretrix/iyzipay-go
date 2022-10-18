@@ -3,11 +3,9 @@ package iyzipay
 type PaymentPreAuth struct{}
 
 func (paymentPreAuth PaymentPreAuth) Create(request CreatePaymentRequest, options Options) string {
-	response := makeRequest(request, "POST", "/payment/preauth", options)
-	return response
+	return makeRequest(request, "POST", "/payment/preauth", options)
 }
 
 func (paymentPreAuth PaymentPreAuth) Retrieve(request RetrievePaymentRequest, options Options) string {
-	response := makeRequest(request, "POST", "/payment/detail", options)
-	return response
+	return makeRequest(request, "POST", "/payment/detail", options)
 }

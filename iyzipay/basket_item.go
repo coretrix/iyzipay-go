@@ -1,7 +1,7 @@
 package iyzipay
 
 type BasketItem struct {
-	Id               string `json:"id,omitempty"`
+	ID               string `json:"id,omitempty"`
 	Price            string `json:"price,omitempty"`
 	Name             string `json:"name,omitempty"`
 	Category1        string `json:"category1,omitempty"`
@@ -12,10 +12,9 @@ type BasketItem struct {
 }
 
 func (request BasketItem) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
-	pkiBuilder.append("id", request.Id)
+	pkiBuilder.append("id", request.ID)
 	pkiBuilder.appendPrice("price", request.Price)
 	pkiBuilder.append("name", request.Name)
 	pkiBuilder.append("category1", request.Category1)

@@ -2,7 +2,7 @@ package iyzipay
 
 type UpdateSubMerchantRequest struct {
 	Locale            string `json:"locale,omitempty"`
-	ConversationId    string `json:"conversationId,omitempty"`
+	ConversationID    string `json:"conversationId,omitempty"`
 	Name              string `json:"name,omitempty"`
 	Email             string `json:"email,omitempty"`
 	GsmNumber         string `json:"gsmNumber,omitempty"`
@@ -20,11 +20,10 @@ type UpdateSubMerchantRequest struct {
 }
 
 func (request UpdateSubMerchantRequest) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
 	pkiBuilder.append("locale", request.Locale)
-	pkiBuilder.append("conversationId", request.ConversationId)
+	pkiBuilder.append("conversationId", request.ConversationID)
 	pkiBuilder.append("name", request.Name)
 	pkiBuilder.append("email", request.Email)
 	pkiBuilder.append("gsmNumber", request.GsmNumber)

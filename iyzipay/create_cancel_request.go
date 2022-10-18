@@ -2,19 +2,18 @@ package iyzipay
 
 type CreateCancelRequest struct {
 	Locale         string `json:"locale,omitempty"`
-	ConversationId string `json:"conversationId,omitempty"`
-	PaymentId      string `json:"paymentId,omitempty"`
-	Ip             string `json:"ip,omitempty"`
+	ConversationID string `json:"conversationId,omitempty"`
+	PaymentID      string `json:"paymentId,omitempty"`
+	IP             string `json:"ip,omitempty"`
 }
 
 func (request CreateCancelRequest) toPkiString() string {
-
 	pkiBuilder := PkiBuilder{}
 
 	pkiBuilder.append("locale", request.Locale)
-	pkiBuilder.append("conversationId", request.ConversationId)
-	pkiBuilder.append("paymentId", request.PaymentId)
-	pkiBuilder.append("ip", request.Ip)
+	pkiBuilder.append("conversationId", request.ConversationID)
+	pkiBuilder.append("paymentId", request.PaymentID)
+	pkiBuilder.append("ip", request.IP)
 
 	return pkiBuilder.getRequestString()
 }
