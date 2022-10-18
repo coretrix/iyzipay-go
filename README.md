@@ -1,3 +1,8 @@
+[![checks & tests](https://github.com/coretrix/iyzipay-go/actions/workflows/main.yml/badge.svg)](https://github.com/coretrix/iyzipay-go/actions)
+[![codecov](https://codecov.io/gh/coretrix/iyzipay-go/branch/master/graph/badge.svg?token=1KZSMFMKWA)](https://codecov.io/gh/coretrix/iyzipay-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/coretrix/iyzipay-go)](https://goreportcard.com/report/github.com/coretrix/iyzipay-go)
+[![GPL3 license](https://img.shields.io/badge/license-GPL3-brightgreen.svg)](https://opensource.org/licenses/GPL-3.0)
+
 # iyzipay-go
 
 You can sign up for an iyzico account at https://iyzico.com
